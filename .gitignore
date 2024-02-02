@@ -1,0 +1,7 @@
+# Ignore Python virtual environment
+env/
+
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+lazylaundry/db.sqlite3
