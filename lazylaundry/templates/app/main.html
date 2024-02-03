@@ -17,7 +17,6 @@
     <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'app/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'app/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
@@ -212,7 +211,7 @@
                                 </span>
                             </a>
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                href="javascript:void(0)">
+                                href="{% url 'user_profile' %}">
                                 <span>Profile</span>
                                 <span>
                                     <span class="badge badge-pill badge-warning">1</span>
