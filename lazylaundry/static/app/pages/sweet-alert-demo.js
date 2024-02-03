@@ -123,7 +123,7 @@ $('#sa-params').click(function () {
 $('#sa-image').click(function () {
     Swal.fire({
         title: 'Drezoc',
-        text: 'Responsive Bootstrap 4 Admin Dashboard',
+        text: 'This is khalid',
         imageUrl: 'assets/images/logo-small.png',
         imageHeight: 40,
         animation: false,

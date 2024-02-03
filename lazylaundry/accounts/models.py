@@ -27,6 +27,7 @@ class LazyUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=32, unique=True)
     phone_number = models.IntegerField(blank=True, null=True, unique=True)
     email = models.EmailField(unique=True)
+    address = models.TextField(blank=True, null=True, default="")
     date_joined = models.DateTimeField(verbose_name="date_joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last_login", auto_now=True)
     is_active = models.BooleanField(default=True)

@@ -49,6 +49,40 @@ def logout_user(request):
     logout(request)
     return redirect('login_user')
 
-
+@login_required(login_url='/accounts/login-user/')
 def user_profile(request):
-    return render(request, 'accounts/user-profile.html')
+    user = LazyUser.objects.filter(username=request.user.username).first()
+
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        phone_number = request.POST.get('phone_number')
+        address = request.POST.get('address')
+        email_address = request.POST.get('email_address')
+
+        if not first_name:
+            messages.error(request, "First name can't be blank!")
+        else:
+            # Check for existing email excluding the current user's email
+            if LazyUser.objects.exclude(id=user.id).filter(email=email_address).exists():
+                messages.error(request, "Email already exists, please choose a different email.")
+            if LazyUser.objects.exclude(id=user.id).filter(username=username).exists():
+                messages.error(request, "Username already exists, please choose a different username.")
+            if LazyUser.objects.exclude(id=user.id).filter(phone_number=phone_number).exists():
+                messages.error(request, "Phone number already exists, please choose a different number.")
+            
+            if not messages.get_messages(request):  # If no error messages, update the user profile
+                user.first_name = first_name
+                user.last_name = last_name
+                user.email = email_address
+                user.address = address
+                user.phone_number = phone_number
+                user.username = username
+                user.save()
+
+                messages.success(request, "Your profile has been updated successfully.")
+                return redirect('user_profile')
+
+    context = {'user': user}
+    return render(request, 'accounts/user-profile.html', context)

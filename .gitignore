@@ -5,3 +5,5 @@ env/
 *.pyc
 __pycache__/
 lazylaundry/db.sqlite3
+
+lazylaundry/accounts/migrations/
