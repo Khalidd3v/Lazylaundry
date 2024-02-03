@@ -38,29 +38,29 @@
                     <div class="dropdown d-none d-sm-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="mdi mdi-plus"></i> Create New
+                            <i class="mdi mdi-plus"></i> Place Order
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu">
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                Application
+                                Paint & Shirts
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                Software
+                                Jackets
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                EMS System
+                                Shoes
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                CRM App
+                                ClothsS
                             </a>
                         </div>
                     </div>
@@ -111,18 +111,6 @@
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <img src="{% static 'app/images/flags/germany.jpg' %}" alt="user-image" class="mr-1" height="12">
                                 <span class="align-middle">German</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="{% static 'app/images/flags/italy.jpg' %}" alt="user-image" class="mr-1" height="12">
-                                <span class="align-middle">Italian</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="{% static 'app/images/flags/russia.jpg' %}" alt="user-image" class="mr-1" height="12">
-                                <span class="align-middle">Russian</span>
                             </a>
                         </div>
                     </div>
@@ -201,27 +189,16 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle header-profile-user" src="{% static 'app/images/users/avatar-3.jpg' %}"
                                 alt="Header Avatar">
-                            <span class="d-none d-sm-inline-block ml-1">Jamie D.</span>
+                            <span class="d-none d-sm-inline-block ml-1">{{request.user.first_name}}</span>
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                href="javascript:void(0)">
-                                <span>Inbox</span>
-                                <span>
-                                    <span class="badge badge-pill badge-info">3</span>
-                                </span>
-                            </a>
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
                                 href="{% url 'user_profile' %}">
                                 <span>Profile</span>
                                 <span>
                                     <span class="badge badge-pill badge-warning">1</span>
                                 </span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                href="javascript:void(0)">
-                                Settings
                             </a>
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
                                 href="javascript:void(0)">
@@ -256,7 +233,7 @@
                         <li class="menu-title">Menu</li>
 
                         <li>
-                            <a href="index.html" class="waves-effect"><i class='bx bx-home-smile'></i><span class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+                            <a href="{% url 'home' %}" class="waves-effect"><i class='bx bx-home-smile'></i><span class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
                         </li>
 
                         <li>
