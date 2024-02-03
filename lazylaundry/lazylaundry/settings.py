@@ -1,12 +1,8 @@
-
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-nwf+h^_q77x@tke9*wm-q_e367b_@8_8s0^+jfy77_d9l*b7oo"
@@ -26,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "accounts",
     "app",
 ]
 
@@ -40,6 +37,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "lazylaundry.urls"
+AUTH_USER_MODEL = "accounts.LazyUser"
 
 TEMPLATES = [
     {
