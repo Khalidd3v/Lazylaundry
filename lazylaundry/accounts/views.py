@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
-
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -26,3 +27,24 @@ def signup_user(request):
         return redirect('login_user')
     
     return render(request, 'accounts/signup.html')
+
+def login_user(request):
+    if request.method == "POST":
+        email_address = request.POST.get('email_address')
+        password = request.POST.get('password')
+
+        if email_address and password:
+            user = authenticate(request, email=email_address, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, "Email or password is incorrect. Please try again.")
+        else:
+            messages.error(request, "Email or password can't be blank.")
+
+    return render(request, 'accounts/login.html')
+
+def logout_user(request):
+    logout(request)
+    return redirect('login_user')

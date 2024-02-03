@@ -16,7 +16,7 @@
         <!-- App css -->
         <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
         <link href="{% static 'app/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static 'app/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'app//css/theme.min.css' %}" rel="stylesheet" type="text/css" />
     
     </head>
 
@@ -37,39 +37,33 @@
                                                     <span><img src="{% static 'app/images/logo-dark.png' %}" alt="" height="26"></span>
                                                 </a>
                                             </div>
-                                            <form class="p-2" method="post">
+                                            <form method="post" class="p-2">
                                                 {% csrf_token %}
                                                 <div class="form-group">
-                                                    <label for="username">First Name</label>
-                                                    <input class="form-control" type="text" name="first_name" id="username" required="" placeholder="Khalid">
-                                                </div>
-                                                <div class="form-group">
                                                     <label for="emailaddress">Email address</label>
-                                                    <input class="form-control" type="email" name="email_address" id="emailaddress" required="" placeholder="Khalid@gmail.com">
+                                                    <input class="form-control" type="email" name="email_address" id="emailaddress" required="" placeholder="khalid@email.com">
                                                 </div>
                                                 <div class="form-group">
+                                                    <a href="pages-recoverpw.html" class="text-muted float-right">Forgot your password?</a>
                                                     <label for="password">Password</label>
                                                     <input class="form-control" type="password" name="password" required="" id="password" placeholder="Enter your password">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="password">Confirm Password</label>
-                                                    <input class="form-control" type="password" name="confirm_password" required="" id="password" placeholder="confrim your password">
-                                                </div>
+            
                                                 <div class="form-group mb-4 pb-3">
                                                     <div class="custom-control custom-checkbox checkbox-primary">
                                                         <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                                                        <label class="custom-control-label" for="checkbox-signin">I accept <a href="#">Terms and Conditions</a></label>
+                                                        <label class="custom-control-label" for="checkbox-signin">Remember me</label>
                                                     </div>
                                                 </div>
+                                                {% if messages %}
                                                 <div>
-                                                    {% if messages %}
-                                                    {% for m in messages %}
-                                                    <p>{{m}}</p>
-                                                    {% endfor %}
-                                                    {% endif %}
+                                                {% for m in messages %}
+                                                <p>{{m}}</p>
+                                                {% endfor %}
                                                 </div>
+                                                {% endif %}
                                                 <div class="mb-3 text-center">
-                                                    <button class="btn btn-primary btn-block" type="submit"> Sign Up Free </button>
+                                                    <button class="btn btn-primary btn-block" type="submit"> Sign In </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -79,7 +73,7 @@
             
                                     <div class="row mt-4">
                                         <div class="col-sm-12 text-center">
-                                            <p class="text-white-50 mb-0">Already have an account? <a href="{% url 'login_user' %}" class="text-white-50 ml-1"><b>Sign In</b></a></p>
+                                            <p class="text-white-50 mb-0">Create an account? <a href="{% url 'signup_user' %}" class="text-white-50 ml-1"><b>Sign Up</b></a></p>
                                         </div>
                                     </div>
             

@@ -38,6 +38,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "lazylaundry.urls"
 AUTH_USER_MODEL = "accounts.LazyUser"
+LOGIN_URL = '/accounts/login-user/'
 
 TEMPLATES = [
     {
