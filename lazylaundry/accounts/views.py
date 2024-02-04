@@ -57,6 +57,7 @@ def user_profile(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         username = request.POST.get('username')
+        profile_pic = request.FILES.get('profile_image')  # Use get() to avoid KeyError
         phone_number = request.POST.get('phone_number')
         address = request.POST.get('address')
         email_address = request.POST.get('email_address')
@@ -71,7 +72,7 @@ def user_profile(request):
                 messages.error(request, "Username already exists, please choose a different username.")
             if LazyUser.objects.exclude(id=user.id).filter(phone_number=phone_number).exists():
                 messages.error(request, "Phone number already exists, please choose a different number.")
-            
+
             if not messages.get_messages(request):  # If no error messages, update the user profile
                 user.first_name = first_name
                 user.last_name = last_name
@@ -79,6 +80,11 @@ def user_profile(request):
                 user.address = address
                 user.phone_number = phone_number
                 user.username = username
+
+                if profile_pic:
+                    # If a profile picture is provided, save it to the 'profile_pic' directory
+                    user.profile_pic.save(profile_pic.name, profile_pic)
+
                 user.save()
 
                 messages.success(request, "Your profile has been updated successfully.")

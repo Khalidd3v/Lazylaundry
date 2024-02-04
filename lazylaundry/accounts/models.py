@@ -24,6 +24,7 @@ class CustomUserAccountManager(BaseUserManager):
 class LazyUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=32, blank=True, null=True)
     last_name = models.CharField(max_length=32, blank=True, null=True)
+    profile_pic = models.ImageField(upload_to='profile_pic/', blank=True, null=True)
     username = models.CharField(max_length=32, unique=True)
     phone_number = models.IntegerField(blank=True, null=True, unique=True)
     email = models.EmailField(unique=True)
